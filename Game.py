@@ -72,9 +72,7 @@ class Brick_Game:
 
         # init ball and platform
         self.ball = Ball()
-        self.ball.ball_startpos()
         self.platform = Platform()
-        self.platform.platform_startpos()
 
         # STATUS
         self.status = "on_platform"
