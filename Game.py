@@ -21,10 +21,12 @@ class Platform:
         self.platform_velocity_r = 10
         self.platform_velocity_l = 10
         self.song_hit_platform = pygame.mixer.Sound('golf.wav')
-        self.platform_startpos()
+        self.platform = pygame.Rect(int(SIZE[0] // 2 - PLATFORM_WIDTH // 2), int(SIZE[1] - PLATFORM_HEIGHT - 10),
+                                    PLATFORM_WIDTH,
+                                    PLATFORM_HEIGHT)
 
     def platform_startpos(self):
-        self.platform = pygame.Rect(SIZE[0] // 2 - PLATFORM_WIDTH // 2, SIZE[1] - PLATFORM_HEIGHT - 10,
+        self.platform = pygame.Rect(int(SIZE[0] // 2 - PLATFORM_WIDTH // 2), int(SIZE[1] - PLATFORM_HEIGHT - 10),
                                     PLATFORM_WIDTH,
                                     PLATFORM_HEIGHT)
 
@@ -40,14 +42,14 @@ class Brick:
 class Ball:
     def __init__(self):
         self.velocity = 5
-        self.ball_view_y = -1
-        self.ball_view_x = 1
         self.ball_startpos()
         self.song_hit_brick = pygame.mixer.Sound("bable.wav")
 
     def ball_startpos(self):
-        self.ball_rect = pygame.Rect(SIZE[0] // 2, SIZE[1] - PLATFORM_HEIGHT - BALL_RADIUS - 10, BALL_RADIUS,
+        self.ball_rect = pygame.Rect(int(SIZE[0] // 2), int(SIZE[1] - PLATFORM_HEIGHT - 2.2 * BALL_RADIUS), BALL_RADIUS,
                                      BALL_RADIUS)
+        self.ball_view_y = -1
+        self.ball_view_x = 1
 
     def render(self):
         pygame.draw.circle(screen, WHITE, (self.ball_rect.left, self.ball_rect.top), BALL_RADIUS)
